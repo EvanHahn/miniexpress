@@ -24,12 +24,7 @@ var prototype = {
   prototype[method] = function(route, handler) {
     this.stack.push(function(req, res, next) {
       var methodMatches = method === req.method.toLowerCase();
-      var routeMatches;
-      if (util.isRegExp(route)) {
-        routeMatches = route.test(req.url);
-      } else {
-        routeMatches = route == req.url;
-      }
+      var routeMatches = util.isRegExp(route) ? route.test(req.url) : route == req.url;
       if (methodMatches || routeMatches) {
         handler(req, res, next);
       } else {
@@ -41,8 +36,5 @@ var prototype = {
 
 module.exports = function express() {
   function app(req, res) { app.handle(req, res); }
-  Object.assign(app, prototype, {
-    stack: []
-  });
-  return app;
+  return Object.assign(app, prototype, { stack: [] });
 };
