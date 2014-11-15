@@ -1,0 +1,14 @@
+{
+  "name": "miniexpress",
+  "author": "Evan Hahn <me@evanhahn.com> (http://evanhahn.com)",
+  "version": "0.1.0",
+  "scripts": {
+    "test": "mocha"
+  },
+  "devDependencies": {
+    "mocha": "^2.0.1"
+  },
+  "dependencies": {
+    "object.assign": "^1.0.1"
+  }
+}
